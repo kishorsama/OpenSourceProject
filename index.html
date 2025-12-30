@@ -3,130 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Digital Recipe Book</title>
+    <title>The No-JS Recipe Book</title>
     <style>
+        /* 1. DEFINE COLORS & THEMES */
         :root {
-            --primary: #e67e22; /* Foodie Orange */
-            --dark: #2c3e50;
-            --light: #ecf0f1;
+            --primary: #e67e22;
+            --bg: #f5f6fa;
+            --card-bg: #ffffff;
+            --text: #2f3640;
+            --nav-bg: #ffffff;
+            --shadow: rgba(0,0,0,0.1);
         }
 
+        /* The Dark Mode Switch Logic */
+        #theme-switcher { display: none; }
+        
+        #theme-switcher:checked ~ .app-wrapper {
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ecf0f1;
+            --nav-bg: #1e1e1e;
+            --shadow: rgba(0,0,0,0.4);
+        }
+
+        /* 2. BASE STYLES */
         body {
-            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            background-color: #f9f9f9;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #333; /* Border color for the page */
         }
 
-        /* Navigation */
+        .app-wrapper {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s ease;
+        }
+
+        /* 3. NAVIGATION */
         nav {
-            background: white;
-            padding: 1rem 2rem;
+            background: var(--nav-bg);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        nav h1 { color: var(--primary); margin: 0; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
 
-        /* Recipe Grid */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .theme-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* 4. SEARCH & FILTER SECTION */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 20px auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text);
+        }
+
+        .filter-links {
+            margin-top: 15px;
+        }
+
+        .filter-links a {
+            text-decoration: none;
+            color: var(--text);
+            background: var(--card-bg);
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 5px;
+            font-size: 0.85rem;
+            border: 1px solid var(--primary);
+            transition: 0.2s;
+        }
+
+        .filter-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 5. RECIPE GRID */
+        .recipe-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Recipe Card */
         .recipe-card {
-            background: white;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px var(--shadow);
             transition: transform 0.3s ease;
+            scroll-margin-top: 100px; /* Helps when jumping to IDs */
         }
 
-        .recipe-card:hover {
-            transform: translateY(-5px);
+        .recipe-card:hover { transform: translateY(-5px); }
+
+        /* Highlight a card when searched/filtered via ID */
+        .recipe-card:target {
+            ring: 4px solid var(--primary);
+            outline: 3px solid var(--primary);
         }
 
         .recipe-img {
             width: 100%;
             height: 200px;
-            background-color: #ddd; /* Placeholder for images */
             object-fit: cover;
         }
 
-        .recipe-content {
-            padding: 20px;
-        }
+        .recipe-info { padding: 20px; }
+        .recipe-info h3 { margin: 10px 0; }
+        .tag { color: var(--primary); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
 
-        .category {
-            color: var(--primary);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .recipe-title {
-            margin: 10px 0;
-            font-size: 1.4rem;
-            color: var(--dark);
-        }
-
-        .btn {
+        .view-btn {
             display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
             background: var(--primary);
             color: white;
-            padding: 10px 15px;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <h1>🍳 MyRecipeBook</h1>
-        <div>
-            <a href="#" style="margin-left:20px; text-decoration:none; color:inherit;">Home</a>
-            <a href="#" style="margin-left:20px; text-decoration:none; color:inherit;">Categories</a>
-        </div>
-    </nav>
+    <input type="checkbox" id="theme-switcher">
 
-    <div class="container">
-        <article class="recipe-card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Salad" class="recipe-img">
-            <div class="recipe-content">
-                <span class="category">Healthy • 15 Mins</span>
-                <h3 class="recipe-title">Quinoa Power Bowl</h3>
-                <p>A fresh mix of quinoa, avocado, and lime dressing.</p>
-                <a href="Recipie/quinoa-bowl.html" class="btn">View Recipe</a>
-            </div>
-        </article>
+    <div class="app-wrapper">
+        
+        <nav>
+            <div class="logo">🍳 MyRecipes</div>
+            <label for="theme-switcher" class="theme-btn">🌓 Toggle Theme</label>
+        </nav>
 
-        <article class="recipe-card">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" alt="Pizza" class="recipe-img">
-            <div class="recipe-content">
-                <span class="category">Italian • 45 Mins</span>
-                <h3 class="recipe-title">Classic Margherita</h3>
-                <p>Homemade dough with fresh basil and mozzarella.</p>
-                <a href="#" class="btn">View Recipe</a>
+        <header class="hero-section">
+            <h1>What are we cooking today?</h1>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search box (Display only)...">
             </div>
-        </article>
+            <div class="filter-links">
+                <span>Try: </span>
+                <a href="#salad">Healthy Salad</a>
+                <a href="#pizza">Pizza</a>
+                <a href="#breakfast">Pancakes</a>
+            </div>
+        </header>
 
-        <article class="recipe-card">
-            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?w=400" alt="Pancakes" class="recipe-img">
-            <div class="recipe-content">
-                <span class="category">Breakfast • 20 Mins</span>
-                <h3 class="recipe-title">Fluffy Pancakes</h3>
-                <p>The perfect weekend treat with maple syrup.</p>
-                <a href="#" class="btn">View Recipe</a>
-            </div>
-        </article>
+        <main class="recipe-grid">
+            
+            <article class="recipe-card" id="salad">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500" class="recipe-img" alt="Salad">
+                <div class="recipe-info">
+                    <span class="tag">Healthy • 15m</span>
+                    <h3>Quinoa Power Bowl</h3>
+                    <p>A fresh Mediterranean bowl with quinoa, chickpeas, and feta.</p>
+                    <a href="Recipie/quinoa-bowl.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="pizza">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="recipe-img" alt="Pizza">
+                <div class="recipe-info">
+                    <span class="tag">Italian • 45m</span>
+                    <h3>Margherita Pizza</h3>
+                    <p>Traditional thin crust topped with fresh mozzarella and basil.</p>
+                    <a href="#" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="breakfast">
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?w=500" class="recipe-img" alt="Pancakes">
+                <div class="recipe-info">
+                    <span class="tag">Breakfast • 20m</span>
+                    <h3>Fluffy Buttermilk Pancakes</h3>
+                    <p>The classic weekend breakfast served with warm maple syrup.</p>
+                    <a href="#" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+        </main>
     </div>
 
 </body>
