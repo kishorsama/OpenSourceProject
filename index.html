@@ -12,7 +12,7 @@
             --card-bg: #ffffff;
             --text: #2f3640;
             --nav-bg: #ffffff;
-            --shadow: rgb(247, 0, 0);
+            --shadow: rgba(0,0,0,0.1);
         }
 
         /* The Dark Mode Switch Logic */
@@ -23,7 +23,7 @@
             --card-bg: #1e1e1e;
             --text: #ecf0f1;
             --nav-bg: #1e1e1e;
-            --shadow: rgb(255, 0, 0);
+            --shadow: rgba(0,0,0,0.5);
         }
 
         /* 2. BASE STYLES */
@@ -176,9 +176,12 @@
             </div>
             <div class="filter-links">
                 <span>Try: </span>
-                <a href="#salad">Healthy Salad</a>
+                <a href="#salad">Salad</a>
                 <a href="#pizza">Pizza</a>
                 <a href="#breakfast">Pancakes</a>
+                <a href="#pasta">Carbonara</a>
+                <a href="#dinner">Stir Fry</a>
+                <a href="#soup">Tomato Soup</a>
             </div>
         </header>
 
@@ -205,12 +208,62 @@
             </article>
 
             <article class="recipe-card" id="breakfast">
-                <img src="data:image/jpeg;base64,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" class="recipe-img" alt="Pancakes">
+                <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=500" class="recipe-img" alt="Pancakes">
                 <div class="recipe-info">
                     <span class="tag">Breakfast • 20m</span>
                     <h3>Fluffy Buttermilk Pancakes</h3>
                     <p>The classic weekend breakfast served with warm maple syrup.</p>
                     <a href="Recipie/pancakes.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="pasta">
+                <img src="https://images.unsplash.com/photo-1546548970-71785318a17b?w=500" class="recipe-img" alt="Carbonara">
+                <div class="recipe-info">
+                    <span class="tag">Pasta • 25m</span>
+                    <h3>Spaghetti Carbonara</h3>
+                    <p>A classic Italian pasta dish made with eggs, cheese, and pancetta.</p>
+                    <a href="Recipie/carbonara.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="dinner">
+                <img src="https://images.unsplash.com/photo-1512058560366-1a51042f5170?w=500" class="recipe-img" alt="Stir Fry">
+                <div class="recipe-info">
+                    <span class="tag">Main • 20m</span>
+                    <h3>Chicken Stir Fry</h3>
+                    <p>Quick and healthy vegetable and chicken stir fry.</p>
+                    <a href="Recipie/stir-fry.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="dip">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500" class="recipe-img" alt="Guacamole">
+                <div class="recipe-info">
+                    <span class="tag">Side • 10m</span>
+                    <h3>Fresh Guacamole</h3>
+                    <p>The perfect creamy avocado dip for any occasion.</p>
+                    <a href="Recipie/guacamole.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="drink">
+                <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500" class="recipe-img" alt="Smoothie">
+                <div class="recipe-info">
+                    <span class="tag">Drink • 5m</span>
+                    <h3>Berry Smoothie</h3>
+                    <p>A refreshing and nutritious start to your day.</p>
+                    <a href="Recipie/smoothie.html" class="view-btn">View Recipe</a>
+                </div>
+            </article>
+
+            <article class="recipe-card" id="soup">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500" class="recipe-img" alt="Tomato Soup">
+                <div class="recipe-info">
+                    <span class="tag">Soup • 30m</span>
+                    <h3>Tomato Soup</h3>
+                    <p>Comforting and creamy tomato soup made with fresh ingredients.</p>
+                    <a href="Recipie/tomato-soup.html" class="view-btn">View Recipe</a>
                 </div>
             </article>
 
