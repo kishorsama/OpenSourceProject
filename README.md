@@ -23,10 +23,12 @@ The project is published and live! You can visit it here:
 * **Hosting:** [GitHub Pages ]
 
 ## 📸 Screenshots
-| Home Page | Search Feature |
-| :--- | :--- |
-| ![Home Page](https://via.placeholder.com/400x250?text=Home+Page+Preview) | ![Search](https://via.placeholder.com/400x250?text=Search+Function+Preview) |
 
+| Home Page | Search Feature |
+| :---: | :---: |
+| <img src="[YOUR_LINK_HERE](https://soham-23107032.github.io/abc/)" width="400" alt="Home Page"> | <img src="[YOUR_LINK_HERE](https://soham-23107032.github.io/abc/Recipie/quinoa-bowl.html)" width="400" alt="Search Feature"> |
+
+> **Tip:** Use a 16:9 aspect ratio for the most consistent look in the table!
 ---
 
 ## 🚀 Installation & Setup
@@ -36,3 +38,4 @@ If you would like to run this project locally:
    ```bash
 
    git clone [https://github.com/Soham-23107032/abc](https://github.com/Soham-23107032/abc)
+
