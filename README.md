@@ -24,7 +24,7 @@ The project is published and live! You can visit it here:
 
 | Home Page | Search Feature |
 | :--- | :--- |
-| ![Home Page](./screenshot/Screenshot 2026-01-13 160109.png) | ![Search](screenshot\Screenshot 2026-01-13 160328.png) |
+| ![Home Page](./screenshot/Screenshot%202026-01-13%20160109.png) | ![Search](./screenshot/Screenshot%202026-01-13%20160328.png) |
 
 
 ## 🚀 Installation & Setup
