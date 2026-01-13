@@ -24,7 +24,7 @@ The project is published and live! You can visit it here:
 
 | Home Page | Search Feature |
 | :--- | :--- |
-| ![Home Page](screenshot/Screenshot 2026-01-13 160109.png) | ![Search](screenshot\Screenshot 2026-01-13 160328.png) |
+| ![Home Page](./screenshot/Screenshot 2026-01-13 160109.png) | ![Search](screenshot\Screenshot 2026-01-13 160328.png) |
 
 
 ## 🚀 Installation & Setup
@@ -34,4 +34,5 @@ If you would like to run this project locally:
    ```bash
 
    git clone [https://github.com/Soham-23107032/abc](https://github.com/Soham-23107032/abc)
+
 
