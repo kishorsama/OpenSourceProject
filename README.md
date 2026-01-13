@@ -22,14 +22,10 @@ The project is published and live! You can visit it here:
 * **JavaScript (ES6):** Dynamic content rendering and search logic.
 * **Hosting:** [GitHub Pages ]
 
-## 📸 Screenshots
-
 | Home Page | Search Feature |
-| :---: | :---: |
-| <img src="[YOUR_LINK_HERE](https://soham-23107032.github.io/abc/)" width="400" alt="Home Page"> | <img src="[YOUR_LINK_HERE](https://soham-23107032.github.io/abc/Recipie/quinoa-bowl.html)" width="400" alt="Search Feature"> |
+| :--- | :--- |
+| ![Home Page](screenshot/Screenshot 2026-01-13 160109.png) | ![Search](screenshot\Screenshot 2026-01-13 160328.png) |
 
-> **Tip:** Use a 16:9 aspect ratio for the most consistent look in the table!
----
 
 ## 🚀 Installation & Setup
 If you would like to run this project locally:
